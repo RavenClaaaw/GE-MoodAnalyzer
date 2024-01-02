@@ -36,4 +36,12 @@ public class Junit {
         
         assertEquals(analyzer.getMood(), "HAPPY");;
     }
+
+    @Test
+    public void testNull(){
+        String text = null;
+        MoodAnalyzer analyzer = new MoodAnalyzer(text);
+        
+        assertEquals(analyzer.getMood(), "HAPPY");;
+    }
 }

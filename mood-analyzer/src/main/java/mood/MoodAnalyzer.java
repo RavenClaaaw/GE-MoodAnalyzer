@@ -9,12 +9,22 @@ public class MoodAnalyzer {
     }
 
     public String getMood(String text){
-        if(text.toLowerCase().contains("sad")) return "SAD";
-        else return "HAPPY";
+        try {
+            if(text.toLowerCase().contains("sad")) return "SAD";
+            else return "HAPPY";
+        } catch (NullPointerException e) {
+            System.out.println("ERROR: " + e.getMessage());
+            return "HAPPY";
+        }
     }
 
     public String getMood(){
-        if(this.text.toLowerCase().contains("sad")) return "SAD";
-        else return "HAPPY";
+        try {
+            if(this.text.toLowerCase().contains("sad")) return "SAD";
+            else return "HAPPY";
+        } catch (NullPointerException e) {
+            System.out.println("ERROR: " + e.getMessage());
+            return "HAPPY";
+        }
     }
 }
