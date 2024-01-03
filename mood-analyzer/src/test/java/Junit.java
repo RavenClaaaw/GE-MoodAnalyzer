@@ -1,4 +1,5 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
@@ -47,14 +48,16 @@ public class Junit {
     // }
 
     @Test
-    public void testThrow(){
-        try {
-            String text = null;
-            MoodAnalyzer analyzer = new MoodAnalyzer(text);
-            String result = analyzer.getMood();
-        } catch (MoodAnalyzerException e) {
-            System.err.println(e.getMessage());
-            assertEquals(e.getMessage(), "ERROR: NULL VALUE");
-        }
+    public void testNullThrow(){
+        String text = null;
+        MoodAnalyzer analyzer = new MoodAnalyzer(text);
+        assertThrows(MoodAnalyzerException.class, ()->{ analyzer.getMood(); });
+    }
+
+    @Test
+    public void testEmptyThrow(){
+        String text = "";
+        MoodAnalyzer analyzer = new MoodAnalyzer(text);
+        assertThrows(MoodAnalyzerException.class, ()->{ analyzer.getMood(); });
     }
 }
